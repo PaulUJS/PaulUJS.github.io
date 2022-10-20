@@ -41,13 +41,18 @@ app.get('/contactme', (req, res) => {
     res.render('contact')
 })
 
+// Runs once contactme form is submitted and sends an email to me with the forms content
 app.post('/contactme', (req, res) => {
+    // Grabs the html form data and parses it
     let email = JSON.stringify(req.body.email)
     let name = JSON.stringify(req.body.name)
     let subject = JSON.stringify(req.body.subject)
     let content = JSON.stringify(req.body.content)
     
-    mail(email, subject, content)
+    // Calls function that sends the email
+    mail(email, subject, content);
+    
+    res.redirect('/')
 })
 
 // Function that grabs the html submitted in the email form and sends an email with that content to me
