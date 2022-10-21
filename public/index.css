@@ -2,6 +2,10 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+body {
+    height: 100%;
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -11,22 +15,65 @@ ul {
     background-color: #333;
   }
   
-  li {
+li {
     float: left;
     height: 60px;
     margin-top: 5px;
-  }
-  
-  li a {
+}
+
+li a {
     display: block;
     color: gainsboro;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 20px;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
     background-color: #111;
-  }
+}
+
+.main {
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.main_text {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 70px;
+    letter-spacing: 0.2px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+
+    -webkit-text-fill-color: rgb(248, 248, 248);
+    stroke: black;
+    stroke-width: .5px;
+    stroke-linejoin: round;
+    animation: 2s pulsate infinite;
+}
+
+button {
+    width: 300px;
+    height: 75px;
+    border-radius: 100px;
+    margin-top: 25px;
+    color: rgb(248, 248, 248);
+}
+
+a:any-link{
+    text-decoration: none;
+    color: none;
+    background-color: none;
+}
+

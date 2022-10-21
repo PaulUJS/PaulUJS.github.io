@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 // Makes the express app
 const app = express();
 
-app.listen(process.env.PORT, () => {})
+app.listen("3000", () => {})
 
 // Gets form info from html forms and reads as json
 app.use(express.json());
