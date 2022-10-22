@@ -17,17 +17,48 @@
         <li><a href="https://www.linkedin.com/in/paul-ulerick-a01947217/">LinkedIn</a></li>
     </ul>
     <main>
-        <div>
-            <form action="" method="post">
-                <label for="email"> Your email </label>
-                    <input type="email" name="email" id="">
-                <label for="subject"> Subject </label>
-                    <input type="text" name="subject" id="">
-                <label for="content"> Content </label>
-                    <input type="text" name="content" id="">
-                <button type="submit">Send Email</button>
-            </form>
+        <div class="main">
+
+            <div class="fcf-body">
+
+                <div id="fcf-form">
+                <h3 class="fcf-h3">Contact me</h3>
+            
+                <form id="fcf-form-id" class="fcf-form-class" method="post" action="contactme">
+                    
+                    <div class="fcf-form-group">
+                        <label for="Email" class="fcf-label">Your email</label>
+                        <div class="fcf-input-group">
+                            <input type="email" id="email" name="email" class="fcf-form-control" required>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <label for="subject" class="fcf-label">Subject</label>
+                        <div class="fcf-input-group">
+                            <input type="text" id="subject" name="subject" class="fcf-form-control" required>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <label for="message" class="fcf-label">Your message</label>
+                        <div class="fcf-input-group">
+                            <textarea id="Message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Send Email</button>
+                    </div>
+            
+                </form>
+                </div>
+            
+            </div>
+            
         </div>
     </main>
+    <script src="/index.js" type="script/javascript">
+    </script>
 </body>
 </html>

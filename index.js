@@ -5,6 +5,7 @@ const { dirname } = require("path");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
+
 // Makes the express app
 const app = express();
 
@@ -45,24 +46,23 @@ app.get('/contactme', (req, res) => {
 app.post('/contactme', (req, res) => {
     // Grabs the html form data and parses it
     let email = JSON.stringify(req.body.email)
-    let name = JSON.stringify(req.body.name)
     let subject = JSON.stringify(req.body.subject)
-    let content = JSON.stringify(req.body.content)
+    let message = JSON.stringify(req.body.message)
     
     // Calls function that sends the email
-    mail(email, subject, content);
+    mail(email, subject, message);
     
     res.redirect('/')
 })
 
 // Function that grabs the html submitted in the email form and sends an email with that content to me
-async function mail(email, subject, content) {
+async function mail(email, subject, message) {
     // creates the email object that will be sending reminder emails
     let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
             user: process.env.EMAIL_SERVICE,
-            pass: process.env.EMAIL_PASS,
+            pass: process.env.EMAIL_PASS
         },
     });
 
@@ -71,7 +71,9 @@ async function mail(email, subject, content) {
         from: email, // sender address
         to: process.env.EMAIL_SERVICE, // My email
         subject: subject, // Subject line
-        text: content // plain text body
+        text: message, // plain text body
+        html: message
     });
 
 }
+
