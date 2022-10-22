@@ -4,7 +4,13 @@ const { send, sendStatus, json } = require("express/lib/response");
 const { dirname } = require("path");
 const path = require("path");
 const nodemailer = require("nodemailer");
+const {google} = require("googleapis")
+require("dotenv").config();
 
+const CLIENT_SECRET = process.env.CLIENT_SECRET
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN
+const CLIENT_ID = process.env.CLIENT_ID
+const EMAIL_SERVICE = process.env.EMAIL_SERVICE
 
 // Makes the express app
 const app = express();
@@ -57,22 +63,39 @@ app.post('/contactme', (req, res) => {
 
 // Function that grabs the html submitted in the email form and sends an email with that content to me
 async function mail(email, subject, message) {
-    // creates the email object that will be sending reminder emails
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_SERVICE,
-            pass: process.env.EMAIL_PASS
-        },
-    });
+    const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URL)
+    oAuth2Client.setCredentials({refresh_token: process.env.REFRESH_TOKEN})
 
-    // send mail with defined transport object
-    let email_details = await transporter.sendMail({
-        from: email, // sender address
-        to: process.env.EMAIL_SERVICE, // My email
-        subject: subject, // Subject line
-        text: message // plain text body
-    });
+    try {
 
+        const access_token = await oAuth2Client.getAccessToken()
+
+        const transport = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                type: 'OAuth2',
+                user: email,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: access_token
+            }
+        })
+
+        const mail_options = {
+            from: email,
+            to: EMAIL_SERVICE,
+            subject: subject,
+            text: message
+        }
+
+        const result = await transport.sendMail(mail_options)
+        console.log('email has been sent successfully')
+        return result
+    }
+    catch (err) {
+        console.log(err)
+        return err
+    }
 }
 
