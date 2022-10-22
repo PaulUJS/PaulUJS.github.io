@@ -71,8 +71,7 @@ async function mail(email, subject, message) {
         from: email, // sender address
         to: process.env.EMAIL_SERVICE, // My email
         subject: subject, // Subject line
-        text: message, // plain text body
-        html: message
+        text: message // plain text body
     });
 
 }
