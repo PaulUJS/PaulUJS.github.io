@@ -27,22 +27,22 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 // Recieves get request and renders landing page
 app.get('/', (req,res) => {
-    res.render('index')
+    res.sendFile(path.join(__dirname, "/index"))
 })
 
 // Renders about me page
 app.get('/aboutme', (req, res) => {
-    res.render('aboutme')
+    es.sendFile(path.join(__dirname, "/aboutme"))
 })
 
 // Renders projects page
 app.get('/projects', (req, res) => {
-    res.render('projects')
+    es.sendFile(path.join(__dirname, "/projects"))
 })
 
 // Renders contact page
 app.get('/contactme', (req, res) => {
-    res.render('contact')
+    es.sendFile(path.join(__dirname, "/contact"))
 })
 
 // Runs once contactme form is submitted and sends an email to me with the forms content
