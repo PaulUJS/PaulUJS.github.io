@@ -12,7 +12,7 @@ ul {
     padding: 0;
     overflow: hidden;
     height: 60px;
-    background-color: #333;
+    background-color: rgb(0, 0, 0);
   }
   
 li {
@@ -33,4 +33,63 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
+}
+
+.main {
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 25px;
+    letter-spacing: 0.2px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    animation: 2s pulsate infinite;
+}
+
+.about_h2 {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    word-spacing: 0px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    animation: 2s pulsate infinite;
 }
