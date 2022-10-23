@@ -19,11 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Allows the html page and css styles to be rendered
-app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
 
 // Makes the css and html files accessable
-app.use(express.static(path.join(__dirname, "/views")));
-app.use(express.static(path.join(__dirname, "/public")));
+//app.use(express.static(path.join(__dirname, "/views")));
+//app.use(express.static(path.join(__dirname, "/public")));
 
 // Recieves get request and renders landing page
 app.get('/', (req,res) => {
@@ -32,17 +32,17 @@ app.get('/', (req,res) => {
 
 // Renders about me page
 app.get('/aboutme', (req, res) => {
-    res.sendFile(path.join(__dirname, "/aboutme.html"))
+    res.sendFile( "/aboutme.html")
 })
 
 // Renders projects page
 app.get('/projects', (req, res) => {
-    res.sendFile(path.join(__dirname, "/projects.html"))
+    res.sendFile("/projects.html")
 })
 
 // Renders contact page
 app.get('/contactme', (req, res) => {
-    res.sendFile(path.join(__dirname, "/contact.html"))
+    res.sendFile("/contact.html")
 })
 
 // Runs once contactme form is submitted and sends an email to me with the forms content
