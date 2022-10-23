@@ -4,13 +4,10 @@ const { send, sendStatus, json } = require("express/lib/response");
 const { dirname } = require("path");
 const path = require("path");
 const nodemailer = require("nodemailer");
-const {google} = require("googleapis")
 require("dotenv").config();
 
-const CLIENT_SECRET = process.env.CLIENT_SECRET
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN
-const CLIENT_ID = process.env.CLIENT_ID
 const EMAIL_SERVICE = process.env.EMAIL_SERVICE
+const EMAIL_PASS = process.env.EMAIL_PASS
 
 // Makes the express app
 const app = express();
@@ -51,7 +48,7 @@ app.get('/contactme', (req, res) => {
 // Runs once contactme form is submitted and sends an email to me with the forms content
 app.post('/contactme', (req, res) => {
     // Grabs the html form data and parses it
-    let email = JSON.stringify(req.body.email)
+    let email = req.body.email
     let subject = JSON.stringify(req.body.subject)
     let message = JSON.stringify(req.body.message)
     
@@ -63,30 +60,20 @@ app.post('/contactme', (req, res) => {
 
 // Function that grabs the html submitted in the email form and sends an email with that content to me
 async function mail(email, subject, message) {
-    const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URL)
-    oAuth2Client.setCredentials({refresh_token: process.env.REFRESH_TOKEN})
-
     try {
-
-        const access_token = await oAuth2Client.getAccessToken()
-
         const transport = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                type: 'OAuth2',
-                user: email,
-                clientId: CLIENT_ID,
-                clientSecret: CLIENT_SECRET,
-                refreshToken: REFRESH_TOKEN,
-                accessToken: access_token
+                user: EMAIL_SERVICE,
+                pass: EMAIL_PASS
             }
         })
 
         const mail_options = {
-            from: email,
+            from: EMAIL_SERVICE,
             to: EMAIL_SERVICE,
             subject: subject,
-            text: message
+            text: `You have recieved an email from ${email} saying: ${message}`
         }
 
         const result = await transport.sendMail(mail_options)
