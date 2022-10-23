@@ -36,7 +36,7 @@ li a:hover {
 }
 
 .main {
-    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    background-image: linear-gradient(to right, #0d147a 0%, #55b2ce 100%);
     position: absolute;
     height: 100%;
     width: 100%;
@@ -125,10 +125,10 @@ a {
     color: black;
     margin: 0 -.25rem;
     padding: 0 .25rem;
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    transition: color .35s ease-in-out, box-shadow .35s ease-in-out;
 }
 
 a:hover {
-    box-shadow: inset 175px 0 0 0 #54b3d6;
+    box-shadow: inset 200px 0 0 0 color none;
     color: white;
 }
