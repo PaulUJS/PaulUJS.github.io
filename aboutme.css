@@ -52,7 +52,8 @@ li a:hover {
     align-items: center;
     text-align: center;
     margin-top: 20px;
-
+    width: 50%;
+    
     font-family: "Arial Narrow", Arial, sans-serif;
     font-size: 25px;
     letter-spacing: 0.2px;
