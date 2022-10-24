@@ -113,7 +113,7 @@ li a:hover {
     text-transform: none;
 
     -webkit-text-fill-color: rgb(0, 0, 0);
-    stroke: black;
+    stroke: rgb(255, 255, 255);
     stroke-width: .5px;
     stroke-linejoin: round;
     animation: 2s pulsate infinite;
